@@ -88,7 +88,7 @@ FOR /F "USEBACKQ TOKENS=*" %%A IN ("%RawPath%/mods") DO (
                         DEL "%%j"
                         set /a modsUpdated=!modsUpdated!+1
                         echo [!TIME:~0,-3!]   !space!!progress! / %ModCount%   🔼 Updated     %%A >> "%log%"
-                        bitsadmin.exe /transfer "Mod (!progress! / !ModCount!): %%A"  /priority FOREGROUND https://github.com/greenmaskenergy/FabricPack/raw/master/%%A "%RawPath%/%%A"
+                        bitsadmin.exe /transfer "Mod (!progress! / !ModCount!): %%A"  /priority FOREGROUND https://raw.githubusercontent.com/greenmaskenergy/FabricPack/main/%%A "%RawPath%/%%A"
                     )
                     
                 )
@@ -98,7 +98,7 @@ FOR /F "USEBACKQ TOKENS=*" %%A IN ("%RawPath%/mods") DO (
             set /a modsDownloaded=!modsDownloaded!+1
             echo [!TIME:~0,-3!]   !space!!progress! / %ModCount%   ✅ Download    %%A >> "%log%"
             echo [31mMissing %%S[0m
-            bitsadmin.exe /transfer "Mod (!progress! / !ModCount!): %%A"  /priority FOREGROUND https://github.com/greenmaskenergy/FabricPack/raw/master/%%A "%RawPath%/%%A"
+            bitsadmin.exe /transfer "Mod (!progress! / !ModCount!): %%A"  /priority FOREGROUND https://raw.githubusercontent.com/greenmaskenergy/FabricPack/main/%%A "%RawPath%/%%A"
         )
     )
 )
@@ -114,7 +114,7 @@ for /R "%RawPath%" %%f in ("*.jar") do (
 )
 )
 
-
+cls
 echo --------------------------------------------------------------------------------------------- >> "%log%"
 echo.Mods ✅ downloaded: !modsDownloaded! >> "%log%"
 echo.Mods 🔼 Updated:    !modsUpdated! >> "%log%"
